@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP-08</title>
+    <style>
+      #alert {
+        display: none;
+        color: white;
+        background-color: red;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculatrice d'Addition</h1>
+
+    <div id="alert">Vous devez saisir un nombre.</div>
+
+    <input
+      type="number"
+      id="nombre1"
+      placeholder="Saisissez le premier nombre"
+    />
+    <input
+      type="number"
+      id="nombre2"
+      placeholder="Saisissez le deuxième nombre"
+    />
+    <button id="calculerBtn">Calculer</button>
+
+    <h2 id="resultat">
+      Le résultat de l'addition est : <span id="somme"></span>
+    </h2>
+
+    <script>
+      const calculerBtn = document.getElementById("calculerBtn");
+      const nombre1Input = document.getElementById("nombre1");
+      const nombre2Input = document.getElementById("nombre2");
+      const sommeSpan = document.getElementById("somme");
+      const alertDiv = document.getElementById("alert");
+
+      calculerBtn.addEventListener("click", function () {
+        const nombre1 = parseFloat(nombre1Input.value);
+        const nombre2 = parseFloat(nombre2Input.value);
+
+        alertDiv.style.display = "none";
+        sommeSpan.textContent = "";
+
+        if (isNaN(nombre1) || isNaN(nombre2)) {
+          alertDiv.style.display = "block";
+          return;
+        }
+        const somme = nombre1 + nombre2;
+        sommeSpan.textContent = somme;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercice Opération</title>
+    <style>
+      #alert {
+        display: none;
+        color: white;
+        background-color: red;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculatrice d'Opération</h1>
+
+    <div id="alert">Vous devez saisir un nombre.</div>
+
+    <input
+      type="number"
+      id="nombre1"
+      placeholder="Saisissez le premier nombre"
+    />
+    <input
+      type="number"
+      id="nombre2"
+      placeholder="Saisissez le deuxième nombre"
+    />
+
+    <select id="operateur">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+
+    <button id="calculerBtn">Calculer</button>
+
+    <h2 id="resultat">Résultat : <span id="somme"></span></h2>
+
+    <script>
+      const calculerBtn = document.getElementById("calculerBtn");
+      const nombre1Input = document.getElementById("nombre1");
+      const nombre2Input = document.getElementById("nombre2");
+      const operateurSelect = document.getElementById("operateur");
+      const sommeSpan = document.getElementById("somme");
+      const alertDiv = document.getElementById("alert");
+
+      calculerBtn.addEventListener("click", function () {
+        const nombre1 = parseFloat(nombre1Input.value);
+        const nombre2 = parseFloat(nombre2Input.value);
+        const operateur = operateurSelect.value;
+
+        alertDiv.style.display = "none";
+        sommeSpan.textContent = "";
+
+        if (isNaN(nombre1) || isNaN(nombre2)) {
+          alertDiv.style.display = "block";
+          return;
+        }
+
+        let resultat;
+        switch (operateur) {
+          case "+":
+            resultat = nombre1 + nombre2;
+            sommeSpan.textContent =
+              "Le résultat de l'addition est : " + resultat;
+            break;
+          case "-":
+            resultat = nombre1 - nombre2;
+            sommeSpan.textContent =
+              "Le résultat de la soustraction est : " + resultat;
+            break;
+          case "*":
+            resultat = nombre1 * nombre2;
+            sommeSpan.textContent =
+              "Le résultat de la multiplication est : " + resultat;
+            break;
+          case "/":
+            if (nombre2 === 0) {
+              sommeSpan.textContent = "Erreur : Division par zéro.";
+            } else {
+              resultat = nombre1 / nombre2;
+              sommeSpan.textContent =
+                "Le résultat de la division est : " + resultat;
+            }
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>

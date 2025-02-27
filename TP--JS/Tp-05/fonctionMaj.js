@@ -3,7 +3,7 @@ function capitalizeFirstLetter(str) {
     return "Erreur : Veuillez entrer une chaîne de caractères non vide.";
   }
 
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  return str.charAt(0).toUpperCase();
 }
 
 console.log(capitalizeFirstLetter("bonjour"));

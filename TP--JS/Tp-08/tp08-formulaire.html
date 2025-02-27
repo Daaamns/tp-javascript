@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contrôle de Formulaire</title>
+    <style>
+      #alert {
+        display: none;
+        color: white;
+        background-color: red;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Formulaire de Saisie</h1>
+
+    <div id="alert">Tous les champs doivent être renseignés.</div>
+
+    <form id="formulaire">
+      <label for="nom">Nom:</label>
+      <input
+        type="text"
+        id="nom"
+        placeholder="Saisissez votre nom"
+      /><br /><br />
+
+      <label for="prenom">Prénom:</label>
+      <input
+        type="text"
+        id="prenom"
+        placeholder="Saisissez votre prénom"
+      /><br /><br />
+
+      <label for="dateNaissance">Date de Naissance:</label>
+      <input type="date" id="dateNaissance" /><br /><br />
+
+      <button type="button" id="submitBtn">Valider</button>
+    </form>
+
+    <script>
+      const submitBtn = document.getElementById("submitBtn");
+      const nomInput = document.getElementById("nom");
+      const prenomInput = document.getElementById("prenom");
+      const dateNaissanceInput = document.getElementById("dateNaissance");
+      const alertDiv = document.getElementById("alert");
+
+      submitBtn.addEventListener("click", function () {
+        alertDiv.style.display = "none";
+
+        if (
+          nomInput.value.trim() === "" ||
+          prenomInput.value.trim() === "" ||
+          dateNaissanceInput.value.trim() === ""
+        ) {
+          alertDiv.style.display = "block";
+          return;
+        }
+
+        alert("Formulaire validé avec succès !");
+      });
+    </script>
+  </body>
+</html>

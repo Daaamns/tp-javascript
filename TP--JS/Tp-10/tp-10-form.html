@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion des Utilisateurs</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+    </style>
+    <script src="modal.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Gestion des Utilisateurs</h1>
+    <button onclick="openCreateUserModal()">Ajouter un utilisateur</button>
+    <modale-view id="modale1" modale-width="20%" header-color="#dc3545">
+      <div class="modifTitle" slot="title" header-color="#dc3545">
+        Créer un utilisateur
+      </div>
+      <div slot="body">
+        <form class="formulaire" onsubmit="creerUtilisateur(event)">
+          <div class="form-group">
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom" required />
+          </div>
+          <div class="form-group">
+            <label for="prenom">Prénom:</label>
+            <input type="text" id="prenom" name="prenom" required />
+          </div>
+          <div class="form-group">
+            <label for="genre">Genre:</label>
+            <select id="genre" name="genre" required>
+              <option value="Masculin">Masculin</option>
+              <option value="Féminin">Féminin</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="dateNaissance">Date de Naissance:</label>
+            <input
+              type="date"
+              id="dateNaissance"
+              name="dateNaissance"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="lieuNaissance">Lieu de Naissance:</label>
+            <input
+              type="text"
+              id="lieuNaissance"
+              name="lieuNaissance"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="departementNaissance">Département de Naissance:</label>
+            <input
+              type="text"
+              id="departementNaissance"
+              name="departementNaissance"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="numeroRue">Numéro de Rue:</label>
+            <input type="text" id="numeroRue" name="numeroRue" required />
+          </div>
+          <div class="form-group">
+            <label for="libelleRue">Libellé de Rue:</label>
+            <input type="text" id="libelleRue" name="libelleRue" required />
+          </div>
+          <div class="form-group">
+            <label for="codePostal">Code Postal:</label>
+            <input type="text" id="codePostal" name="codePostal" required />
+          </div>
+          <div class="form-group">
+            <label for="ville">Ville:</label>
+            <input type="text" id="ville" name="ville" required />
+          </div>
+          <button class="modifBtn" type="submit">Créer Utilisateur</button>
+        </form>
+      </div>
+      <div slot="footer">
+        <input type="button" value="Annuler" onclick="closeModale('modale1')" />
+      </div>
+    </modale-view>
+    <modale-view id="deleteUserModal" modale-width="30%">
+      <h2 slot="title" header-color="#dc3545">Confirmation</h2>
+      <p slot="body">Êtes-vous sûr de vouloir supprimer cet utilisateur ?</p>
+      <div slot="footer">
+        <button
+          onclick="confirmDelete()"
+          style="
+            background: #dc3545;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+          "
+        >
+          Oui
+        </button>
+        <button
+          onclick="closeModale('deleteUserModal')"
+          style="
+            background: gray;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+          "
+        >
+          Annuler
+        </button>
+      </div>
+    </modale-view>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Genre</th>
+          <th>Date de Naissance</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="utilisateurs"></tbody>
+    </table>
+  </body>
+</html>

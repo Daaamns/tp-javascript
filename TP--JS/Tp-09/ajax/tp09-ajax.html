@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pollution par Pays</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #dddddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        cursor: pointer;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      img {
+        width: 24px;
+        height: 18px;
+      }
+
+      h1,
+      h2 {
+        margin: 10px 0;
+      }
+    </style>
+    <script src="script.js" defer></script>
+  </head>
+  <body onload="initialiserDonnees()">
+    <h1 id="titre"></h1>
+    <h2 id="annee"></h2>
+
+    <div>
+      <label for="min">MIN :</label>
+      <input type="number" id="min" placeholder="Valeur minimum" />
+      <label for="max">MAX :</label>
+      <input type="number" id="max" placeholder="Valeur maximum" />
+      <button id="valider" onclick="filtrerDonnees()">Valider</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Nom</th>
+          <th>Valeur</th>
+          <th>%</th>
+        </tr>
+      </thead>
+      <tbody id="corps"></tbody>
+    </table>
+  </body>
+</html>

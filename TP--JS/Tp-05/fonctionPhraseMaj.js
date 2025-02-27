@@ -18,6 +18,6 @@ function capitalizeEachWord(sentence) {
 
 // Tests
 console.log(capitalizeEachWord("bonjour tout le monde")); // "Bonjour Tout Le Monde"
-console.log(capitalizeEachWord("hello world")); // "Hello World"
-console.log(capitalizeEachWord("")); // "Erreur : Veuillez entrer une chaîne de caractères non vide."
+console.log(capitalizeEachWord("hello world"));
+console.log(capitalizeEachWord(""));
 console.log(capitalizeEachWord(123));

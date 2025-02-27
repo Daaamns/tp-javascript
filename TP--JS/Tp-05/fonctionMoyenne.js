@@ -1,6 +1,6 @@
 function calculMoyenne(tab) {
   if (!Array.isArray(tab)) {
-    return "Erreur : l'entrée doit être un tableau.";
+    throw new Error("Erreur : l'entrée doit être un tableau.");
   }
 
   if (tab.length === 0) {
@@ -8,7 +8,7 @@ function calculMoyenne(tab) {
   }
 
   if (!tab.every((element) => typeof element === "number")) {
-    return "Erreur : le tableau contient un élément non numérique.";
+    throw new Error("Erreur : le tableau contient un élément non numérique.");
   }
 
   let somme = tab.reduce((acc, val) => acc + val, 0);
@@ -20,7 +20,16 @@ let tableau2 = [];
 let tableau3 = [10, "test", 30];
 let tableau4 = "Ceci n'est pas un tableau";
 
-console.log(calculMoyenne(tableau1));
-console.log(calculMoyenne(tableau2));
-console.log(calculMoyenne(tableau3));
-console.log(calculMoyenne(tableau4));
+function testerMoyenne(tab) {
+  try {
+    const moyenne = calculMoyenne(tab);
+    console.log(`La moyenne de [${tab}] est : ${moyenne}`);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+testerMoyenne(tableau1);
+testerMoyenne(tableau2);
+testerMoyenne(tableau3);
+testerMoyenne(tableau4);
